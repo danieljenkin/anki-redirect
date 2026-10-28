@@ -18,9 +18,9 @@
       const frontText = name;
       const backText = name + " - https://www.notion.so/" + id;
 
-      // Pure package intent: strictly forces opening AnkiDroid without broad text/plain filters
+      // Target explicit launcher activity to bypass Play Store lookup
       const intentUrl = "intent:#Intent;" +
-        "package=com.ichi2.anki;" +
+        "component=com.ichi2.anki/.AnkiDroid;" +
         "S.android.intent.extra.SUBJECT=" + encodeURIComponent(frontText) + ";" +
         "S.android.intent.extra.TEXT=" + encodeURIComponent(backText) + ";" +
         "end";
