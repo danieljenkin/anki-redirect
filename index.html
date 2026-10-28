@@ -11,14 +11,15 @@
   </style>
   <script>
     window.onload = function() {
-      window.location.href = "anki://";
+      const androidIntent = "intent:#Intent;launchFlags=0x10000000;component=com.ichi2.anki/.AnkiDroid;end";
+      window.location.href = androidIntent;
     };
   </script>
 </head>
 <body>
   <div class="card">
     <p>Opening Anki...</p>
-    <a href="anki://">Tap Here to Launch Anki</a>
+    <a href="intent:#Intent;launchFlags=0x10000000;component=com.ichi2.anki/.AnkiDroid;end">Tap Here to Launch Anki</a>
   </div>
 </body>
 </html>
