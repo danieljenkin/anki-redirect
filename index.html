@@ -18,11 +18,10 @@
       const frontText = name;
       const backText = name + " - https://www.notion.so/" + id;
 
-      // Force AnkiDroid package while sending text payload
+      // AnkiDroid API explicit action intent
       const intentUrl = "intent:#Intent;" +
-        "action=android.intent.action.SEND;" +
-        "type=text/plain;" +
-        "S.android.intent.extra.SUBJECT=" + encodeURIComponent(frontText) + ";" +
+        "action=com.ichi2.anki.intent.ADD_NOTE;" +
+        "S.com.ichi2.anki.intent.extra.START_NOTE_TEXT=" + encodeURIComponent(frontText) + ";" +
         "S.android.intent.extra.TEXT=" + encodeURIComponent(backText) + ";" +
         "package=com.ichi2.anki;" +
         "end";
