@@ -18,11 +18,13 @@
       const frontText = name;
       const backText = name + " - https://www.notion.so/" + id;
 
-      // Target explicit launcher activity to bypass Play Store lookup
+      // Force AnkiDroid package while sending text payload
       const intentUrl = "intent:#Intent;" +
-        "component=com.ichi2.anki/.AnkiDroid;" +
+        "action=android.intent.action.SEND;" +
+        "type=text/plain;" +
         "S.android.intent.extra.SUBJECT=" + encodeURIComponent(frontText) + ";" +
         "S.android.intent.extra.TEXT=" + encodeURIComponent(backText) + ";" +
+        "package=com.ichi2.anki;" +
         "end";
 
       document.getElementById('open-btn').href = intentUrl;
