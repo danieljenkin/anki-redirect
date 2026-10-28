@@ -18,13 +18,14 @@
       const frontText = name;
       const backText = name + " - https://www.notion.so/" + id;
 
-      // Target AnkiDroid's IntentHandler directly to trigger the Add Note screen
+      // Target AnkiDroid's NoteEditor activity explicitly by class name
       const intentUrl = "intent:#Intent;" +
         "action=android.intent.action.SEND;" +
         "type=text/plain;" +
         "S.android.intent.extra.SUBJECT=" + encodeURIComponent(frontText) + ";" +
         "S.android.intent.extra.TEXT=" + encodeURIComponent(backText) + ";" +
-        "component=com.ichi2.anki/.IntentHandler;" +
+        "S.com.ichi2.anki.target_card=0;" +
+        "component=com.ichi2.anki/com.ichi2.anki.NoteEditor;" +
         "end";
 
       document.getElementById('open-btn').href = intentUrl;
