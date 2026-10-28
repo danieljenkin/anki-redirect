@@ -14,18 +14,17 @@
       const params = new URLSearchParams(window.location.search);
       const name = params.get('name') || '';
       const id = params.get('id') || '';
-      const deck = params.get('deck') || '';
 
       const frontText = name;
       const backText = name + " - https://www.notion.so/" + id;
 
-      // Direct intent targeting AnkiDroid's CardTemplateEditor activity
+      // Target AnkiDroid's IntentHandler directly to trigger the Add Note screen
       const intentUrl = "intent:#Intent;" +
         "action=android.intent.action.SEND;" +
         "type=text/plain;" +
         "S.android.intent.extra.SUBJECT=" + encodeURIComponent(frontText) + ";" +
         "S.android.intent.extra.TEXT=" + encodeURIComponent(backText) + ";" +
-        "component=com.ichi2.anki/.CardTemplateEditor;" +
+        "component=com.ichi2.anki/.IntentHandler;" +
         "end";
 
       document.getElementById('open-btn').href = intentUrl;
