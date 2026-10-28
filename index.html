@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Opening Anki...</title>
+  <title>Adding to Anki...</title>
   <style>
     body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f4f4f5; }
     .card { background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
@@ -14,15 +14,18 @@
       const params = new URLSearchParams(window.location.search);
       const name = params.get('name') || '';
       const id = params.get('id') || '';
+      const deck = params.get('deck') || '';
 
-      const textPayload = name + "\nhttps://www.notion.so/" + id;
-      
-      // Android Intent scheme targeting AnkiDroid's SEND action
+      const frontText = name;
+      const backText = name + " - https://www.notion.so/" + id;
+
+      // Direct intent targeting AnkiDroid's CardTemplateEditor activity
       const intentUrl = "intent:#Intent;" +
         "action=android.intent.action.SEND;" +
         "type=text/plain;" +
-        "S.android.intent.extra.TEXT=" + encodeURIComponent(textPayload) + ";" +
-        "package=com.ichi2.anki;" +
+        "S.android.intent.extra.SUBJECT=" + encodeURIComponent(frontText) + ";" +
+        "S.android.intent.extra.TEXT=" + encodeURIComponent(backText) + ";" +
+        "component=com.ichi2.anki/.CardTemplateEditor;" +
         "end";
 
       document.getElementById('open-btn').href = intentUrl;
@@ -32,8 +35,8 @@
 </head>
 <body>
   <div class="card">
-    <p>Opening AnkiDroid...</p>
-    <a id="open-btn" href="#">Tap Here to Add Note in Anki</a>
+    <p>Creating Anki Card...</p>
+    <a id="open-btn" href="#">Tap to Add Card</a>
   </div>
 </body>
 </html>
