@@ -11,15 +11,29 @@
   </style>
   <script>
     window.onload = function() {
-      const androidIntent = "intent:#Intent;launchFlags=0x10000000;component=com.ichi2.anki/.AnkiDroid;end";
-      window.location.href = androidIntent;
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get('name') || '';
+      const id = params.get('id') || '';
+
+      const textPayload = name + "\nhttps://www.notion.so/" + id;
+      
+      // Android Intent scheme targeting AnkiDroid's SEND action
+      const intentUrl = "intent:#Intent;" +
+        "action=android.intent.action.SEND;" +
+        "type=text/plain;" +
+        "S.android.intent.extra.TEXT=" + encodeURIComponent(textPayload) + ";" +
+        "package=com.ichi2.anki;" +
+        "end";
+
+      document.getElementById('open-btn').href = intentUrl;
+      window.location.href = intentUrl;
     };
   </script>
 </head>
 <body>
   <div class="card">
-    <p>Opening Anki...</p>
-    <a href="intent:#Intent;launchFlags=0x10000000;component=com.ichi2.anki/.AnkiDroid;end">Tap Here to Launch Anki</a>
+    <p>Opening AnkiDroid...</p>
+    <a id="open-btn" href="#">Tap Here to Add Note in Anki</a>
   </div>
 </body>
 </html>
