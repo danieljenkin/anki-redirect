@@ -2,23 +2,23 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Opening Anki...</title>
+  <style>
+    body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f4f4f5; }
+    .card { background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    a { display: inline-block; margin-top: 1rem; padding: 12px 24px; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; }
+  </style>
   <script>
     window.onload = function() {
-      const params = new URLSearchParams(window.location.search);
-      const deck = params.get('deck') || '';
-      const name = params.get('name') || '';
-      const id = params.get('id') || '';
-
-      const targetUrl = "anki://x-callback-url/addnote?type=Basic&deck=" + 
-        encodeURIComponent(deck) + 
-        "&fldBack=" + encodeURIComponent(name + " - https://www.notion.so/" + id);
-
-      window.location.href = targetUrl;
+      window.location.href = "anki://";
     };
   </script>
 </head>
 <body>
-  <p>Opening Anki...</p>
+  <div class="card">
+    <p>Opening Anki...</p>
+    <a href="anki://">Tap Here to Launch Anki</a>
+  </div>
 </body>
 </html>
