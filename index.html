@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Opening Anki...</title>
+  <script>
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const deck = params.get('deck') || '';
+      const name = params.get('name') || '';
+      const id = params.get('id') || '';
+
+      const targetUrl = "anki://x-callback-url/addnote?type=Basic&deck=" + 
+        encodeURIComponent(deck) + 
+        "&fldBack=" + encodeURIComponent(name + " - https://www.notion.so/" + id);
+
+      window.location.href = targetUrl;
+    };
+  </script>
+</head>
+<body>
+  <p>Opening Anki...</p>
+</body>
+</html>
